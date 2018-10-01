@@ -24,3 +24,21 @@ const breakDownPath = (str) => {
 const isNotFilename = (str) => str.indexOf('.') === -1
 
 execPromise(gitCommand).then(breakByLines).then(a => a.map(breakDownPath).map(b => b.filter(isNotFilename))).then(console.log).catch(console.error)
+
+const scripts = {
+    src: {
+        more: {
+            _run_: [
+                'poo',
+                'egg'
+            ]
+        },
+        _run_: [
+            'src-things'
+        ]
+    }
+}
+
+const pathToScripts = (path, scripts) => {
+    
+}
