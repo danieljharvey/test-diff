@@ -14,4 +14,13 @@ function execPromise(command) {
     })
 }
 
-execPromise(gitCommand).then(console.log).catch(console.error)
+
+const breakByLines = (all) => all.split('/n').map(str => str.replace(/(\r\n\t|\n|\r\t)/gm,""))
+
+const breakDownPath = (str) => {
+    return str.split("/") 
+}
+
+const isNotFilename = (str) => str.indexOf('.') === -1
+
+execPromise(gitCommand).then(breakByLines).then(a => a.map(breakDownPath).map(b => b.filter(isNotFilename))).then(console.log).catch(console.error)
